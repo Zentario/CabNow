@@ -1,38 +1,38 @@
 {
-    "drivers" : {
-        "driver1" : {
-            "latitude" : {
-                "degrees" : 12,
-                "minutes" : 56,
-                "seconds" : 9.91,
-                "direction" : "N"
+    "drivers": {
+        "driver1": {
+            "latitude": {
+                "degrees": 12,
+                "minutes": 56,
+                "seconds": 9.91,
+                "direction": "N"
             },
-            "longitude" : {
-                "degrees" : 77,
-                "minutes" : 32,
-                "seconds" : 5.18,
-                "direction" : "E"
+            "longitude": {
+                "degrees": 77,
+                "minutes": 32,
+                "seconds": 5.18,
+                "direction": "E"
             },
-            "phone_no" : "123456789",
-            "status" : "available",
-            "rating" : 4.5
+            "phone_no": "123456789",
+            "status": "available",
+            "rating": 4.5
         },
-        "driver2" : {
-            "latitude" : {
-                "degrees" : 12,
-                "minutes" : 56,
-                "seconds" : 6.08,
-                "direction" : "N"
+        "driver2": {
+            "latitude": {
+                "degrees": 12,
+                "minutes": 56,
+                "seconds": 6.08,
+                "direction": "N"
             },
-            "longitude" : {
-                "degrees" : 77,
-                "minutes" : 32,
-                "seconds" : 12.33,
-                "direction" : "E"
+            "longitude": {
+                "degrees": 77,
+                "minutes": 32,
+                "seconds": 12.33,
+                "direction": "E"
             },
-            "phone_no" : "987654321",
-            "status" : "not_available",
-            "rating" : 4.6
+            "phone_no": "987654321",
+            "status": "not_available",
+            "rating": 4.6
         }
     }
 }
