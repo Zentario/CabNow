@@ -129,7 +129,7 @@ def addUser():
                 data = read_users()
 
                 if(phone_no in data['users'].keys()):
-                        return jsonify({"error" : True, "message" : "User already exists"}), 400
+                        return jsonify({"error" : True, "message" : "User already exists"}), 202
 
                 data['users'][phone_no] = {"password" : pwd}
                 write_users(data)
@@ -149,10 +149,10 @@ def loginUser():
                 pwd = request.get_json()['password']
                 
                 if(phone not in data['users'].keys()):
-                        return jsonify({"error" : True, "message" : "No such user"}), 400
+                        return jsonify({"error" : True, "message" : "No such user"}), 202
                 
                 if(pwd != data['users'][phone]["password"]):
-                        return jsonify({"error" : True, "message" : "Password is wrong"}), 400
+                        return jsonify({"error" : True, "message" : "Password is wrong"}), 202
                 
                 return jsonify({"error" : False, "message" : "Login successful", phone : data["users"][phone]}), 200
 
