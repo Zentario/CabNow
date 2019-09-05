@@ -26,28 +26,59 @@ def write_drivers(data):
 
 @app.route("/")
 def test():
-    return '<h1>Deployed on Heroku !</h1><h3>SE Project</h3>'
+        return '<h1>Deployed on Heroku !</h1><h3>SE Project</h3>'
 
 
 @app.route("/test")
 def test_v1():
-    return "<h1>File contents</h1><h4>" + str(read_drivers()) + "</h4>" + "<h4>" + str(read_users()) + "</h4>"
+        return jsonify( {"users.json" : read_users(), "drivers.json" : read_drivers() })
+
 
 
 @app.route("/deleteuser", methods=['POST'])
 def deleteUser():
         if(request.method == 'POST'):
                 data = read_users()
-                name = request.get_json()['name']
-                if(name in data['users'].keys()):
-                        del data['users'][name]
+                phone = request.get_json()['phone_no']
+                if(phone in data['users'].keys()):
+                        user = data['users'][phone]
+                        del data['users'][phone]
                         write_users(data)
-                        return jsonify({ name : "Deleted"}), 200
-
-                return jsonify({}), 400  
+                        return jsonify({"error": False, "message" : "User deleted", phone : user}), 200
+                else:
+                        return jsonify({"error": True, "message" : "User does not exist", "phone_no" : phone}), 400  
 
         else:
-                return jsonify({}), 401
+                return jsonify({"error" : True, "message" : "Bad method"}), 405
+
+@app.route("/getusers", methods=['GET'])
+def getusers():
+        if(request.method == 'GET'):
+                data = read_users()
+                users = data["users"]
+                if(len(users) == 0):
+                        return jsonify({"error": True, "message" : "Users list empty"}), 204
+
+                return jsonify({"error": False, "users": users}), 200
+
+        else:
+                return jsonify({"error" : True, "message" : "Bad method"}), 405
+        
+
+@app.route("/getuser", methods=['POST'])
+def getuser():
+        if(request.method == 'POST'):
+                data = read_users()
+                users = data['users']
+
+                phone = request.get_json()['phone_no']
+                if(phone not in users.keys()):
+                        return jsonify({"error": True, "message" : "User does not exist"}), 400
+
+                return jsonify({"error": False, "user" : { phone : users[phone]} }), 200
+
+        else:
+                return jsonify({"error" : True, "message" : "Bad method"}), 405
 
 
 @app.route("/adddriver", methods=['POST'])
@@ -70,7 +101,7 @@ def addDriver():
                 return jsonify({"name": name, "message" : "Created driver"}), 201
 
         else:
-                return jsonify({}), 401
+                return jsonify({"error" : True, "message" : "Bad method"}), 405
 
 
 @app.route("/deletedriver", methods=['POST'])
@@ -86,28 +117,26 @@ def deleteDriver():
                 return jsonify({}), 400  
 
         else:
-                return jsonify({}), 401
+                return jsonify({"error" : True, "message" : "Bad method"}), 405
 
 
 # Signup
 @app.route("/adduser", methods=['POST'])
 def addUser():
         if(request.method == 'POST'):
-                name = request.get_json()['name']
                 pwd = request.get_json()['password']
                 phone_no = request.get_json()['phone_no']
                 data = read_users()
 
-                if(name in data['users'].keys()):
-                        return jsonify({"message" : "User already exists"}), 400
+                if(phone_no in data['users'].keys()):
+                        return jsonify({"error" : True, "message" : "User already exists"}), 400
 
-                data['users'][name] = {"password" : pwd, "phone_no" : phone_no}
+                data['users'][phone_no] = {"password" : pwd}
                 write_users(data)
-                #return jsonify({"name": name, "password" : pwd, "phone_no" : phone_no}), 201
-                return jsonify({"message" : "User created successfully"}), 201
+                return jsonify({"error" : False, "message" : "User created successfully", phone_no : data["users"][phone_no]}), 201
 
         else:
-                return jsonify({"message" : "Bad method"}), 401
+                return jsonify({"error" : True, "message" : "Bad method"}), 405
 
 
 # Login
@@ -116,19 +145,19 @@ def loginUser():
         if(request.method == 'POST'):
                 
                 data = read_users()
-                name = request.get_json()['name']
+                phone = request.get_json()['phone_no']
                 pwd = request.get_json()['password']
                 
-                if(name not in data['users'].keys()):
-                        return jsonify({"message" : "No such user"}), 400
+                if(phone not in data['users'].keys()):
+                        return jsonify({"error" : True, "message" : "No such user"}), 400
                 
-                if(pwd != data['users'][name]["password"]):
-                        return jsonify({"message" : "Password is wrong"}), 400
+                if(pwd != data['users'][phone]["password"]):
+                        return jsonify({"error" : True, "message" : "Password is wrong"}), 400
                 
-                return jsonify({"message" : "Login successful"}), 200
+                return jsonify({"error" : False, "message" : "Login successful", phone : data["users"][phone]}), 200
 
         else:
-                return jsonify({"message" : "Bad method"}), 401
+                return jsonify({"error" : True, "message" : "Bad method"}), 405
 
 
 
