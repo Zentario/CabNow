@@ -9,7 +9,7 @@ Android side	github.com/Zentario/CabNowAndroidApp
 - For user
 	- Able to select destination on map
 	- Gets fare and ETA estimate before booking
-	*- [Optional] Optimize so that nearest drivers are shown in map on user side
+	- [Optional] Optimize so that nearest drivers are shown in map on user side
 	   [nearest drivers can be chosen by ETA or Euclidean distance]
 	- Book the ride
 	- Route the path to driver
