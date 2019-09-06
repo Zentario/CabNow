@@ -1,6 +1,12 @@
 CAB-NOW		https://cab-now.herokuapp.com/
 
-Android side	github.com/Zentario/CabNowAndroidApp
+- Current issues with design [How does client and server communicate so that client listens for changes in DB]
+	- How will the driver know when the user has requested a ride in his location
+	- How will the user know when the driver nearby has accepted his ride
+	- Live tracking the driver in user app
+
+
+Android side	https://github.com/Zentario/CabNowAndroidApp
 
 - Signin [with checkbox to become a driver] default option is user
 - Login for both user and driver
@@ -30,7 +36,7 @@ Android side	github.com/Zentario/CabNowAndroidApp
    for both user and driver ONLY ONCE
 
 
-API server side	 github.com/Zentario/CabNow
+API server side	 https://github.com/Zentario/CabNow
 
 - Running Gunicorn with Flask hosted on Heroku [Heroku identifies code push to git and deploys auto]
 - Use https://cab-now.herokuapp.com/ as BASE_URL [end points vary on functionality]
