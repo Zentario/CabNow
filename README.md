@@ -9,7 +9,7 @@ Android side	github.com/Zentario/CabNowAndroidApp
 - For user
 	- Able to select destination on map
 	- Gets fare and ETA estimate before booking
-	*- [Optional] Optimize so that nearest drivers are shown in map on user side
+	- [Optional] Optimize so that nearest drivers are shown in map on user side
 	   [nearest drivers can be chosen by ETA or Euclidean distance]
 	- Book the ride
 	- Route the path to driver
@@ -26,7 +26,7 @@ Android side	github.com/Zentario/CabNowAndroidApp
 	- After reaching route path to destination
 	- Show bill amount after ride
 
-*- [Optional] Optimize so that route from driver to user, user to destination, bill, ETA is calculated
+- [Optional] Optimize so that route from driver to user, user to destination, bill, ETA is calculated
    for both user and driver ONLY ONCE
 
 
@@ -38,3 +38,18 @@ API server side	 github.com/Zentario/CabNow
 - Database
 	- [New db design is yet to be made] Use two json files for user and driver
 	- All the files in the git repo are hosted on the server in the same directory.
+
+
+- Detailed HTTP status codes doc https://www.restapitutorial.com/httpstatuscodes.html
+- Api end points in FLASK 
+	- Header ["Content-Type: application/json"]
+
+	- /adduser
+		- Request  {"phone_no" : "", "name" : "", "email" : "", "password" : ""}
+		- Response {"error" : true/false, "message" : "", user_obj_that_got_created}
+		- 201, 202, 405
+	
+	- /login
+		- Request  {"phone_no" : "", "password" : ""}
+		- Response {"error" : true/false, "message" : "", user_obj_that_logged_in}
+		- 200, 202, 405
