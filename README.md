@@ -1,6 +1,6 @@
 CAB-NOW		https://cab-now.herokuapp.com/
 
-- Current issues with design [How does client and server communicate so that client listens for changes in DB]
+- Current issues with design [How to make client and server communicate so that client listens for changes in DB continuously]
 	- How will the driver know when the user has requested a ride in his location
 	- How will the user know when the driver nearby has accepted his ride
 	- Live tracking the driver in user app
