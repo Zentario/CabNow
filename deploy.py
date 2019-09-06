@@ -126,12 +126,14 @@ def addUser():
         if(request.method == 'POST'):
                 pwd = request.get_json()['password']
                 phone_no = request.get_json()['phone_no']
+                email = request.get_json()['email']
+                name = request.get_json()['name']
                 data = read_users()
 
                 if(phone_no in data['users'].keys()):
                         return jsonify({"error" : True, "message" : "User already exists"}), 202
 
-                data['users'][phone_no] = {"password" : pwd}
+                data['users'][phone_no] = {"password" : pwd, "email" : email, "name" : name}
                 write_users(data)
                 return jsonify({"error" : False, "message" : "User created successfully", phone_no : data["users"][phone_no]}), 201
 
@@ -163,5 +165,5 @@ def loginUser():
 
 
 #For testing only
-#if __name__ == "__main__":
-#    app.run(host="127.0.0.1", port=5000, debug=True)
+if __name__ == "__main__":
+   app.run(host="127.0.0.1", port=5000, debug=True)

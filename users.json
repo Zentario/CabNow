@@ -1,13 +1,14 @@
 {
     "users": {
         "123456789": {
-            "password": "123"
+            "password": "123",
+            "email": "user1@abc.com",
+            "name": "user1"
         },
         "987654321": {
-            "password": "123"
-        },
-        "986754321": {
-            "password": "123"
+            "password": "123",
+            "email": "user2@abc.com",
+            "name": "user2"
         }
     },
     "ride": {
