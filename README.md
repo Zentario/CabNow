@@ -1,22 +1,21 @@
-CAB-NOW		https://cab-now.herokuapp.com/
+## CAB-NOW		https://cab-now.herokuapp.com/
 
-- Current issues with design [How to make client and server communicate so that client listens for changes in DB continuously]
+### Current issues with design 
+	- [How to make client and server communicate so that client listens for changes in DB continuously]
 	- How will the driver know when the user has requested a ride in his location
 	- How will the user know when the driver nearby has accepted his ride
 	- Live tracking the driver in user app
 
 
-Android side	https://github.com/Zentario/CabNowAndroidApp
+### Android app progress [Git-link](https://github.com/Zentario/CabNowAndroidApp)
+- Sign in for user
+- Login for user
 
-- Signin [with checkbox to become a driver] default option is user
-- Login for both user and driver
-- Based on preference redirect screens in app [for user and driver]
-
-- For user
+### User requirements
 	- Able to select destination on map
 	- Gets fare and ETA estimate before booking
 	- [Optional] Optimize so that nearest drivers are shown in map on user side
-	   [nearest drivers can be chosen by ETA or Euclidean distance]
+	  [nearest drivers can be chosen by ETA or Euclidean distance]
 	- Book the ride
 	- Route the path to driver
 	- Able to cancel ride
@@ -26,7 +25,7 @@ Android side	https://github.com/Zentario/CabNowAndroidApp
 	- Ride completes and receives bill receipt as notification
 	- Payment interface GooglePay
 
-- For Driver
+### Driver requirements
 	- Receives notification to accept ride or not
 	- When accepted route the path to user
 	- After reaching route path to destination
@@ -36,8 +35,7 @@ Android side	https://github.com/Zentario/CabNowAndroidApp
    for both user and driver ONLY ONCE
 
 
-API server side	 https://github.com/Zentario/CabNow
-
+## API server side
 - Running Gunicorn with Flask hosted on Heroku [Heroku identifies code push to git and deploys auto]
 - Use https://cab-now.herokuapp.com/ as BASE_URL [end points vary on functionality]
 
@@ -46,8 +44,8 @@ API server side	 https://github.com/Zentario/CabNow
 	- All the files in the git repo are hosted on the server in the same directory.
 
 
-- Detailed HTTP status codes doc https://www.restapitutorial.com/httpstatuscodes.html
-- Api end points in FLASK 
+- Detailed HTTP status codes documentation [here](https://www.restapitutorial.com/httpstatuscodes.html)
+### Api end points in FLASK 
 	- Header ["Content-Type: application/json"]
 
 	- /adduser
