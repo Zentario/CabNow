@@ -38,11 +38,9 @@
 ## API server side
 - Running Gunicorn with Flask hosted on Heroku [Heroku identifies code push to git and deploys auto]
 - Use https://cab-now.herokuapp.com/ as BASE_URL [end points vary on functionality]
-
-- Database
+### Database
 	- [New db design is yet to be made] Use two json files for user and driver
 	- All the files in the git repo are hosted on the server in the same directory.
-
 
 - Detailed HTTP status codes documentation [here](https://www.restapitutorial.com/httpstatuscodes.html)
 ### Api end points in FLASK 
