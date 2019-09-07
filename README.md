@@ -7,10 +7,14 @@
 	- Live tracking the driver in user app
 
 
-### Android app progress [Git-link](https://github.com/Zentario/CabNowAndroidApp)
+### Android app progress [Git-link](https://github.com/Zentario/CabNowAndroidApp)	
 - Sign in for user
 - Login for user
-
+- Current location
+- Test users [phone_no : password] Currently 2 users
+	- 123456789 : 123
+	- 987654321 : 123
+	
 ### User requirements
 	- Able to select destination on map
 	- Gets fare and ETA estimate before booking
