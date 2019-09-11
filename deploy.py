@@ -63,6 +63,24 @@ def getusers():
 
         else:
                 return jsonify({"error" : True, "message" : "Bad method"}), 405
+
+
+@app.route("/getAvailableDrivers", methods=['GET'])
+def getdrivers():
+        if(request.method == 'GET'):
+                data = read_drivers()
+                drivers = data["drivers"]
+                if(len(drivers) == 0):
+                        return jsonify({"error": True, "message" : "Drivers list empty"}), 204
+
+                avail_drivers = [i for i in drivers if drivers['status'] == 'available']
+                if(len(avail_drivers) == 0):
+                        return jsonify({"error": True, "message" : "No drivers available"}), 204
+
+                return jsonify({"error": False, "drivers": avail_drivers}), 200
+
+        else:
+                return jsonify({"error" : True, "message" : "Bad method"}), 405
         
 
 @app.route("/getuser", methods=['POST'])
